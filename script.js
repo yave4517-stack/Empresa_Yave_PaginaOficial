@@ -23,3 +23,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// =======================================================
+// LÓGICA PARA EL MENÚ SIDEBAR (Navegación Móvil)
+// =======================================================
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.seccion-principal-wrapper');
+
+    if (menuToggle && sidebar && mainContent) {
+        // Toggle (mostrar/ocultar) el menú al hacer clic en el botón de hamburguesa
+        menuToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('open');
+        });
+        
+        // Cierra el sidebar si se hace click en el contenido principal (solo si está abierto)
+        mainContent.addEventListener('click', function() {
+            if (sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+            }
+        });
+        
+        // Evita que el click dentro del propio sidebar cierre el menú inmediatamente
+        sidebar.addEventListener('click', function(e) {
+             e.stopPropagation();
+        });
+    }
+
+    // Nota: Si necesitas alguna funcionalidad extra en el futuro (como sliders o validación de formularios), 
+    // debes añadir el código aquí, dentro o después de este bloque de DOMContentLoaded.
+});
