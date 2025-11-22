@@ -22,15 +22,16 @@ body {
 }
 
 /* ---------------------------------- */
-/* ESTILOS DE LA CABECERA Y NAVEGACIÓN */
+/* ESTILOS DE LA CABECERA Y NAVEGACIÓN (CORREGIDO PARA EVITAR QUE SE CORTE) */
 /* ---------------------------------- */
 
 .header-fondo {
     background-color: var(--color-azul-principal);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: sticky; /* Fija la navegación en la parte superior */
+    position: sticky; 
     top: 0;
     z-index: 1000;
+    min-height: 70px; 
 }
 
 .navbar {
@@ -39,7 +40,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 10px 20px; /* Reducimos el padding vertical */
 }
 
 .logo-nav a {
@@ -53,27 +54,29 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px; /* Espacio entre los elementos del menú */
+    gap: 12px; /* Reducimos el espacio entre los elementos para que quepan */
+    flex-wrap: wrap; 
+    justify-content: flex-end; 
 }
 
 .nav-links li a {
     color: var(--color-blanco);
     text-decoration: none;
-    font-size: 0.9em;
-    padding: 5px 10px;
+    font-size: 0.85em; /* Reducimos el tamaño de la fuente */
+    padding: 5px 8px; /* Reducimos el padding de los enlaces */
     transition: color 0.3s, background-color 0.3s;
-    white-space: nowrap; /* Evita que los textos largos se rompan */
+    white-space: nowrap; 
 }
 
 .nav-links li a:hover {
-    color: var(--color-azul-secundario); /* Resaltado en azul brillante */
+    color: var(--color-azul-secundario); 
 }
 
 /* Botón "Contáctanos" */
 .btn-contacto {
     background-color: var(--color-azul-secundario);
     color: var(--color-blanco) !important;
-    padding: 8px 15px !important;
+    padding: 8px 12px !important; 
     border-radius: 5px;
     font-weight: bold;
 }
@@ -93,27 +96,23 @@ body {
     padding: 20px;
 }
 
-/* Sección HERO (Logo y Banner) - CORREGIDO para eliminar el recuadro gris */
+/* Sección HERO (Logo y Banner) - CORREGIDO para logo nítido y sin recuadro gris */
 .hero-logo {
-    /* Si tienes una imagen de fondo de planta industrial, ponla aquí */
-    /* background-image: url('Empresa_Yave_PaginaOficial/fondo_planta.jpg'); */ 
-    /* background-size: cover; */
-    /* background-position: center; */
+    /* Aquí puedes poner una imagen de fondo si quieres */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 50px 20px; 
     margin-bottom: 40px;
-    background-color: var(--color-gris-fondo); /* Fondo suave para la sección del logo */
-    border-radius: 10px; /* Borde sutil */
+    background-color: var(--color-gris-fondo); /* Fondo suave */
+    border-radius: 10px; 
 }
 
 .logo-principal {
-    /* Tamaño responsivo: min 250px, max 600px, 70% del ancho del contenedor */
-    width: clamp(250px, 70%, 600px); 
+    width: clamp(250px, 70%, 600px); /* Tamaño responsivo */
     height: auto;
     display: block;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra sutil para que el logo resalte */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
     border-radius: 5px; 
 }
 
@@ -129,7 +128,6 @@ body {
 .intro-texto h2 {
     color: var(--color-azul-principal);
     text-align: center;
-    /* Tamaño responsivo para h2 */
     font-size: clamp(1.8em, 4vw, 2.8em); 
     margin-bottom: 30px;
     font-weight: 700; 
@@ -140,7 +138,6 @@ body {
 
 .intro-texto h3 {
     color: var(--color-azul-principal); 
-    /* Tamaño responsivo para h3 */
     font-size: clamp(1.3em, 3vw, 2em); 
     margin-top: 35px;
     margin-bottom: 18px;
@@ -151,7 +148,6 @@ body {
 
 .intro-texto p {
     margin-bottom: 18px;
-    /* Tamaño responsivo para párrafos */
     font-size: clamp(1em, 1.8vw, 1.15em); 
     text-align: justify;
     line-height: 1.7;
@@ -176,42 +172,42 @@ body {
 
 @media (max-width: 900px) {
     .navbar {
-        flex-direction: column; /* Apila el logo y el menú */
+        flex-direction: column; 
         padding: 15px 10px;
-        align-items: flex-start; /* Alinea los ítems a la izquierda */
+        align-items: flex-start; 
     }
 
     .nav-links {
-        flex-direction: column; /* Apila los enlaces */
+        flex-direction: column; 
         width: 100%;
         margin-top: 15px;
-        align-items: center; /* Centra los enlaces */
-        gap: 10px; /* Menos espacio entre enlaces */
+        align-items: center; 
+        gap: 10px; 
     }
 
     .nav-links li {
-        width: 100%; /* Cada enlace ocupa todo el ancho */
+        width: 100%; 
         text-align: center;
     }
 
     .nav-links li a {
-        display: block; /* Para que el padding y hover funcionen bien */
+        display: block; 
         padding: 10px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador suave */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
     }
 
     .nav-links li:last-child a {
-        border-bottom: none; /* No hay separador en el último elemento */
+        border-bottom: none; 
     }
 
     .logo-nav {
         width: 100%;
-        text-align: center; /* Centra el logo de YAVÉ en la navegación */
+        text-align: center; 
         margin-bottom: 10px;
     }
 
     .logo-nav a {
-        font-size: 1.5em; /* Ajusta el tamaño del logo en móvil */
+        font-size: 1.5em; 
     }
 }
 
