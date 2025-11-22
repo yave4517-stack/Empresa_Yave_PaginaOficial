@@ -53,6 +53,8 @@ body {
     left: 0;
     transition: transform 0.3s, left 0.3s;
     z-index: 100;
+    /* >>>>>> CORRECCIÓN: Habilita el scroll vertical cuando es necesario <<<<<< */
+    overflow-y: auto; 
 }
 
 .sidebar-logo a {
