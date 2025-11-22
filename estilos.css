@@ -1,3 +1,175 @@
+/* Definición de variables de color para fácil mantenimiento */
+:root {
+    --color-azul-principal: #004b8d; /* Azul corporativo oscuro de YAVÉ */
+    --color-azul-secundario: #4285F4; /* Azul brillante para acentos */
+    --color-gris-fondo: #f4f4f4; /* Gris muy claro para secciones */
+    --color-gris-texto: #333; /* Gris oscuro para texto principal */
+    --color-blanco: #ffffff;
+}
+
+/* Estilos Generales y Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--color-gris-texto);
+    background-color: var(--color-blanco);
+}
+
+/* ---------------------------------- */
+/* ESTILOS DE LA CABECERA Y NAVEGACIÓN */
+/* ---------------------------------- */
+
+.header-fondo {
+    background-color: var(--color-azul-principal);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Fija la navegación en la parte superior */
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo-nav a {
+    color: var(--color-blanco);
+    font-size: 1.8em;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espacio entre los elementos del menú */
+}
+
+.nav-links li a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    transition: color 0.3s, background-color 0.3s;
+    white-space: nowrap; /* Evita que los textos largos se rompan */
+}
+
+.nav-links li a:hover {
+    color: var(--color-azul-secundario); /* Resaltado en azul brillante */
+}
+
+/* Botón "Contáctanos" */
+.btn-contacto {
+    background-color: var(--color-azul-secundario);
+    color: var(--color-blanco) !important;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-contacto:hover {
+    background-color: #003a6b; 
+}
+
+
+/* ---------------------------------- */
+/* ESTILOS DE LA SECCIÓN PRINCIPAL */
+/* ---------------------------------- */
+
+.seccion-principal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Sección HERO (Logo y Banner) - CORREGIDO para eliminar el recuadro gris */
+.hero-logo {
+    /* Si tienes una imagen de fondo de planta industrial, ponla aquí */
+    /* background-image: url('Empresa_Yave_PaginaOficial/fondo_planta.jpg'); */ 
+    /* background-size: cover; */
+    /* background-position: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px; 
+    margin-bottom: 40px;
+    background-color: var(--color-gris-fondo); /* Fondo suave para la sección del logo */
+    border-radius: 10px; /* Borde sutil */
+}
+
+.logo-principal {
+    /* Tamaño responsivo: min 250px, max 600px, 70% del ancho del contenedor */
+    width: clamp(250px, 70%, 600px); 
+    height: auto;
+    display: block;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra sutil para que el logo resalte */
+    border-radius: 5px; 
+}
+
+/* Texto Introductorio - CORREGIDO para más dinamismo */
+.intro-texto {
+    padding: 20px; 
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+    margin-bottom: 40px;
+}
+
+.intro-texto h2 {
+    color: var(--color-azul-principal);
+    text-align: center;
+    /* Tamaño responsivo para h2 */
+    font-size: clamp(1.8em, 4vw, 2.8em); 
+    margin-bottom: 30px;
+    font-weight: 700; 
+    line-height: 1.2;
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+}
+
+.intro-texto h3 {
+    color: var(--color-azul-principal); 
+    /* Tamaño responsivo para h3 */
+    font-size: clamp(1.3em, 3vw, 2em); 
+    margin-top: 35px;
+    margin-bottom: 18px;
+    font-weight: 600;
+    border-left: 5px solid var(--color-azul-secundario); 
+    padding-left: 15px;
+}
+
+.intro-texto p {
+    margin-bottom: 18px;
+    /* Tamaño responsivo para párrafos */
+    font-size: clamp(1em, 1.8vw, 1.15em); 
+    text-align: justify;
+    line-height: 1.7;
+    color: var(--color-gris-texto);
+}
+
+.intro-texto p strong {
+    color: var(--color-azul-principal); 
+}
+
+.intro-texto hr {
+    border: 0;
+    height: 2px; 
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--color-azul-secundario), rgba(0, 0, 0, 0));
+    margin: 50px 0;
+}
+
+
 /* ---------------------------------- */
 /* RESPONSIVE DESIGN (para celulares y tablets) */
 /* ---------------------------------- */
@@ -45,16 +217,16 @@
 
 @media (max-width: 600px) {
     .seccion-principal {
-        padding: 10px; /* Menos padding en pantallas muy pequeñas */
+        padding: 10px; 
     }
 
     .hero-logo {
-        padding: 30px 10px; /* Ajusta el padding del logo */
-        min-height: 250px; /* Menor altura para el banner del logo */
+        padding: 30px 10px; 
+        min-height: 250px; 
     }
     
     .logo-principal {
-        width: clamp(200px, 80%, 400px); /* Logo un poco más pequeño en móviles */
+        width: clamp(200px, 80%, 400px); 
     }
 
     .intro-texto {
