@@ -33,12 +33,14 @@ body {
 }
 
 .seccion-principal {
-    max-width: 1200px; /* Un poco más ancho */
+    max-width: 1200px;
     margin: 0 auto;
-    background-color: #ffffff; /* Blanco limpio para el contenido */
+    background-color: #ffffff;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    /* Aseguramos que el contenido no se desborde */
+    overflow-x: hidden; 
 }
 
 /* 3. SIDEBAR (MENÚ LATERAL) */
@@ -53,7 +55,6 @@ body {
     left: 0;
     transition: transform 0.3s, left 0.3s;
     z-index: 100;
-    /* >>>>>> CORRECCIÓN: Habilita el scroll vertical cuando es necesario <<<<<< */
     overflow-y: auto; 
 }
 
@@ -90,14 +91,12 @@ body {
 .sidebar-links a:hover,
 .sidebar-links a.active-link {
     background-color: var(--color-primario);
-    /* Usamos el color secundario como borde elegante para el estado activo */
     border-left: 5px solid var(--color-secundario);
     color: #ffffff;
     font-weight: bold;
-    padding-left: 10px; /* Compensar el espacio del borde */
+    padding-left: 10px;
 }
 
-/* Botón de Contacto en la Sidebar */
 .btn-contacto-sidebar {
     display: block;
     width: 100%;
@@ -126,7 +125,7 @@ h1 {
     margin-bottom: 20px;
     border-bottom: 4px solid var(--color-secundario);
     padding-bottom: 10px;
-    font-weight: 300; /* Fuente más delgada para un look moderno */
+    font-weight: 300;
 }
 
 h2 {
@@ -176,14 +175,31 @@ li {
     margin-bottom: 8px;
 }
 
-/* 5. ESTILOS ESPECÍFICOS PARA LAS SECCIONES */
+/* 5. ESTILOS ESPECÍFICOS PARA LA IMAGEN PRINCIPAL (INDEX.HTML) */
 
-/* Sección de Inicio */
-.imagen-central {
-    border: 5px solid var(--color-secundario);
+/* Contenedor de la imagen en Index */
+.hero-imagen {
+    text-align: center;
+    margin-bottom: 30px;
+    /* Aseguramos que el contenedor se adapte en móvil */
+    width: 100%; 
 }
 
-/* Estilos de Retos y Problemáticas */
+/* CLAVE: La imagen se ajusta al contenedor sin desbordarse */
+.imagen-central {
+    /* Las siguientes 3 líneas son cruciales para la responsividad de la imagen */
+    max-width: 100%; 
+    height: auto; 
+    display: block;
+    
+    border: 5px solid var(--color-secundario);
+    /* Puedes ajustar el tamaño base en escritorio, pero max-width: 100% lo limita en móvil */
+    width: 500px; 
+}
+
+
+/* 6. ESTILOS DE CONTACTO Y OTROS ELEMENTOS */
+
 .reto-bloque {
     border: 1px solid #EAECEE;
     border-left: 5px solid var(--color-primario);
@@ -191,23 +207,21 @@ li {
 }
 
 .valor-item.problema {
-    background-color: #FDEDEC; /* Rojo/Gris claro */
-    border-left: 3px solid #E74C3C; /* Rojo Institucional */
+    background-color: #FDEDEC;
+    border-left: 3px solid #E74C3C;
 }
 
 .valor-item.solucion {
-    background-color: #E8F8F5; /* Verde/Gris claro */
-    border-left: 3px solid #2ECC71; /* Verde Institucional */
+    background-color: #E8F8F5;
+    border-left: 3px solid #2ECC71;
 }
 
-/* Estilos para Alianzas */
 .marca-item, .industria-item {
     border: 1px solid #EAECEE;
     border-top: 4px solid var(--color-secundario);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Estilos para Cierre Corporativo */
 .btn-contacto-final {
     background-color: var(--color-secundario);
     font-size: 1.3em;
@@ -217,13 +231,10 @@ li {
     background-color: var(--color-primario);
 }
 
-
-/* 6. ESTILOS DE CONTACTO (ASEGURANDO LA FUNCIONALIDAD VISIBLE) */
-
 /* Estilo para los enlaces de teléfono y correo */
 .seccion-contacto-directo a, 
 .seccion-adicional a {
-    color: var(--color-secundario); /* Azul vivo para resaltar */
+    color: var(--color-secundario);
     text-decoration: none;
     font-weight: 700;
     transition: color 0.2s, text-decoration 0.2s;
@@ -231,11 +242,10 @@ li {
 
 .seccion-contacto-directo a:hover,
 .seccion-adicional a:hover {
-    color: var(--color-primario); /* Azul oscuro al pasar el ratón */
-    text-decoration: underline; /* Subrayado claro */
+    color: var(--color-primario);
+    text-decoration: underline;
 }
 
-/* Contenedores de contacto */
 .tarjetas-contacto {
     display: flex;
     gap: 30px;
@@ -260,17 +270,11 @@ li {
     margin-bottom: 15px;
 }
 
-.tarjeta-representante p {
-    margin-bottom: 8px;
-    line-height: 1.5;
-}
-
 
 /* 7. RESPONSIVIDAD (MÓVIL) */
 .mobile-header {
-    /* Mismos colores serios */
     background-color: var(--color-fondo-sidebar);
-    display: none; /* Oculto por defecto en escritorio */
+    display: none;
     color: white;
     padding: 10px 20px;
     position: fixed;
@@ -295,8 +299,9 @@ li {
     font-weight: bold;
 }
 
+/* Puntos de quiebre para móviles */
 @media (max-width: 950px) {
-    /* Ajustes para tabletas y móviles */
+    /* Mostrar header móvil y ocultar el margen del sidebar */
     .mobile-header {
         display: flex;
     }
@@ -318,15 +323,16 @@ li {
         padding: 20px;
     }
     
-    .tarjetas-contacto {
-        flex-direction: column;
-    }
-    
-    .propuesta-valor, .tarjetas-contacto, .alianzas-marcas, .industrias-atendidas {
+    /* Apilar elementos en columnas para facilitar la lectura móvil */
+    .tarjetas-contacto, 
+    .propuesta-valor, 
+    .alianzas-marcas, 
+    .industrias-atendidas {
         flex-direction: column;
         gap: 15px;
     }
 
+    /* Reducir tamaño de fuente en encabezados para móvil */
     h1 {
         font-size: 2em;
     }
